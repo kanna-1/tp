@@ -10,8 +10,8 @@
         "john-doe": "John Doe",
         "zhang-yiheng": "Zhang Yiheng",
         "janssen-lau": "Janssen Lau",
-        "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "huang-yi-chee": "Huang Yi Chee",
+        "wang-zhi-wren": "Wang Zhi, Wren"
       },
       "headingKeywords": {}
     },
@@ -162,6 +162,14 @@
     {
       "src": "team/weeehung.md",
       "title": "Wee Hung's Project Portfolio Page",
+      "headings": {
+        "project-healthsync": "Project: HealthSync"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/wzwren.md",
+      "title": "Wang Zhi Wren's Project Portfolio Page",
       "headings": {
         "project-healthsync": "Project: HealthSync"
       },
