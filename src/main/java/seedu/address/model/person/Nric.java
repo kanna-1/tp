@@ -8,7 +8,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Nric {
 
-    public static final String MESSAGE_CONSTRAINTS = "NRIC must be in the format LNNNNNNNL, where L represents a letter and N represents a number.";
+    public static final String MESSAGE_CONSTRAINTS =
+            "NRIC must be in the format LNNNNNNNL, where L represents a letter and N represents a number.";
 
     /*
      * Validation regex for NRIC in the format LNNNNNNNL, where L represents a letter and N represents a number.
