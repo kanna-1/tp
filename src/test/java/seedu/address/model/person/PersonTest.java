@@ -92,10 +92,11 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
+        String expectedAppt = ALICE.getAppointment().isPresent() ? ALICE.getAppointment().get().toString() : null;
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", nric=" + ALICE.getNric()
                 + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
-                + ", appointment=" + ALICE.getAppointment()
+                + ", appointment=" + expectedAppt
                 + ", medicalHistories=" + ALICE.getMedicalHistories() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }

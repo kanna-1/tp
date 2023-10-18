@@ -51,6 +51,13 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
+    public void toModelType_nullAppointment_returnsPerson() throws IllegalValueException {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_NRIC, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, null, VALID_MEDICALHISTORIES, VALID_TAGS);
+        person.toModelType();
+    }
+
+    @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
@@ -142,13 +149,4 @@ public class JsonAdaptedPersonTest {
         String expectedMessage = Appointment.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
-
-    @Test
-    public void toModelType_nullAppointment_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_NRIC, VALID_PHONE, VALID_EMAIL,
-                VALID_ADDRESS, null, VALID_MEDICALHISTORIES, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Appointment.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
-    }
-
 }

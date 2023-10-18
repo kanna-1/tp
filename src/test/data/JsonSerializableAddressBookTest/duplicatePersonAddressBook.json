@@ -5,7 +5,7 @@
     "phone": "94351253",
     "email": "alice@example.com",
     "address": "123, Jurong West Ave 6, #08-111",
-    "appointment": "2023-01-1 10:00 12:00",
+    "appointment": "2023-12-12 12:00 15:00",
     "MedicalHistories": [ "Diabetes" ],
     "tags": [ "friends" ]
   }, {
@@ -13,7 +13,7 @@
     "nric": "T0111110E",
     "phone": "94351253",
     "email": "pauline@example.com",
-    "appointment": "2023-01-1 10:00 12:00",
+    "appointment": "2023-12-12 12:00 15:00",
     "MedicalHistories": [ "Diabetes" ],
     "address": "4th street"
   } ]

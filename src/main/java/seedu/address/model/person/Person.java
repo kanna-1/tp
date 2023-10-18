@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -34,7 +35,7 @@ public class Person {
      */
     public Person(Name name, Nric nric, Phone phone, Email email, Address address, Appointment appointment,
                   Set<MedicalHistory> medicalHistories, Set<Tag> tags) {
-        requireAllNonNull(name, nric, phone, email, address, appointment, medicalHistories, tags);
+        requireAllNonNull(name, nric, phone, email, address, medicalHistories, tags);
         this.name = name;
         this.nric = nric;
         this.phone = phone;
@@ -56,8 +57,8 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         // set new fields to null
-        this.nric = new Nric("test");
-        this.appointment = new Appointment("test");
+        this.nric = new Nric("T7243948H");
+        this.appointment = new Appointment("2023-12-12 12:00 15:00");
     }
 
     public Name getName() {
@@ -80,8 +81,8 @@ public class Person {
         return address;
     }
 
-    public Appointment getAppointment() {
-        return appointment;
+    public Optional<Appointment> getAppointment() {
+        return Optional.ofNullable(appointment);
     }
     /**
      * Returns an immutable medical history set, which throws {@code UnsupportedOperationException}
@@ -127,12 +128,13 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
+
         return name.equals(otherPerson.name)
                 && nric.equals(otherPerson.nric)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && appointment.equals(otherPerson.appointment)
+                && Objects.equals(appointment, otherPerson.appointment)
                 && medicalHistories.equals(otherPerson.medicalHistories)
                 && tags.equals(otherPerson.tags);
     }
