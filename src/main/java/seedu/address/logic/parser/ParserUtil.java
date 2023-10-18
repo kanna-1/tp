@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -57,7 +58,7 @@ public class ParserUtil {
      * Parses a {@code String nric} into a {@code Nric}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code nric} is invalid.
      */
     public static Nric parseNric(String nric) throws ParseException {
         requireNonNull(nric);
@@ -115,7 +116,35 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String appointment} into an {@code Appointment}, if it exists.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code appointment} is invalid.
+     */
+    public static Appointment parseAppointmentIfExists(Optional<String> appointment) throws ParseException {
+        if (appointment.isEmpty()) {
+            return null;
+        }
+        return parseAppointment(appointment.get());
+    }
+
+    /**
      * Parses a {@code String appointment} into an {@code Appointment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code appointment} is invalid.
+     */
+    public static Appointment parseAppointment(String appointment) throws ParseException {
+        requireNonNull(appointment);
+        String trimmedAppointment = appointment.trim();
+        if (!Appointment.isValidAppointment(trimmedAppointment)) {
+            throw new ParseException(Appointment.MESSAGE_CONSTRAINTS);
+        }
+        return new Appointment(trimmedAppointment);
+    }
+
+    /**
+     * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code start} is invalid.

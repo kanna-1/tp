@@ -25,26 +25,31 @@ import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
+
+    // TODO: Modify NRIC Constraints to be more tightly bound
     private static final String INVALID_NRIC = " ";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_START = "23/12";
     private static final String INVALID_END = "12AM";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
+    private static final String INVALID_APPOINTMENT = "Tomorrow 8PM";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_MEDICAL_HISTORY = "  癌症";
-
+    private static final String INVALID_MEDICAL = " ";
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_NRIC = "A023923S";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_APPOINTMENT = "2023-01-23 10:00 12:00";
     private static final String VALID_EMAIL = "rachel@example.com";
+    private static final String VALID_APPOINTMENT = "2023-12-12 11:30 12:00";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
     private static final String VALID_MEDICAL_HISTORY_1 = "cancer";
     private static final String VALID_MEDICAL_HISTORY_2 = "fever";
-
+    private static final String VALID_MEDICAL_1 = "diabetes";
+    private static final String VALID_MEDICAL_2 = "AB+";
     private static final String WHITESPACE = " \t\r\n";
 
     @Test
@@ -107,6 +112,7 @@ public class ParserUtilTest {
     }
 
     @Test
+
     public void parseAppointment_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseAppointment((String) null));
     }
@@ -116,6 +122,27 @@ public class ParserUtilTest {
         Appointment expectedAppointment = new Appointment(VALID_APPOINTMENT);
         System.out.println(ParserUtil.parseAppointment(VALID_APPOINTMENT));
         assertEquals(expectedAppointment, ParserUtil.parseAppointment(VALID_APPOINTMENT));
+    }
+    public void parseNric_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseNric((String) null));
+    }
+
+    @Test
+    public void parseNric_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNric(INVALID_NRIC));
+    }
+
+    @Test
+    public void parseNric_validValueWithoutWhitespace_returnsNric() throws Exception {
+        Nric expectedNric = new Nric(VALID_NRIC);
+        assertEquals(expectedNric, ParserUtil.parseNric(VALID_NRIC));
+    }
+
+    @Test
+    public void parseNric_validValueWithWhitespace_returnsTrimmedNric() throws Exception {
+        String nricWithWhitespace = WHITESPACE + VALID_NRIC + WHITESPACE;
+        Nric expectedNric = new Nric(VALID_NRIC);
+        assertEquals(expectedNric, ParserUtil.parseNric(nricWithWhitespace));
     }
 
     @Test
@@ -223,6 +250,29 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseAppointment_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseAppointment((String) null));
+    }
+
+    @Test
+    public void parseAppointment_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseAppointment(INVALID_APPOINTMENT));
+    }
+
+    @Test
+    public void parseAppointment_validValueWithoutWhitespace_returnsAppointment() throws Exception {
+        Appointment expectedAppt = new Appointment(VALID_APPOINTMENT);
+        assertEquals(expectedAppt, ParserUtil.parseAppointment(VALID_APPOINTMENT));
+    }
+
+    @Test
+    public void parseAppointment_validValueWithWhitespace_returnsTrimmedAppointment() throws Exception {
+        String apptWithWhitespace = WHITESPACE + VALID_APPOINTMENT + WHITESPACE;
+        Appointment expectedAppt = new Appointment(VALID_APPOINTMENT);
+        assertEquals(expectedAppt, ParserUtil.parseAppointment(apptWithWhitespace));
+    }
+
+    @Test
     public void parseTag_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseTag(null));
     }
@@ -274,5 +324,53 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseMedical_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseMedical(null));
+    }
+
+    @Test
+    public void parseMedical_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMedical(INVALID_MEDICAL));
+    }
+
+    @Test
+    public void parseMedical_validValueWithoutWhitespace_returnsMedical() throws Exception {
+        MedicalHistory expectedMedHistory = new MedicalHistory(VALID_MEDICAL_1);
+        assertEquals(expectedMedHistory, ParserUtil.parseMedical(VALID_MEDICAL_1));
+    }
+
+    @Test
+    public void parseMedical_validValueWithWhitespace_returnsTrimmedMedical() throws Exception {
+        String medHistoryWithWhitespace = WHITESPACE + VALID_MEDICAL_1 + WHITESPACE;
+        MedicalHistory expectedMedHistory = new MedicalHistory(VALID_MEDICAL_1);
+        assertEquals(expectedMedHistory, ParserUtil.parseMedical(medHistoryWithWhitespace));
+    }
+
+    @Test
+    public void parseMedicals_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseMedicals(null));
+    }
+
+    @Test
+    public void parseMedicals_collectionWithInvalidMedicals_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parseMedicals(Arrays.asList(VALID_MEDICAL_1, INVALID_MEDICAL)));
+    }
+
+    @Test
+    public void parseMedicals_emptyCollection_returnsEmptySet() throws Exception {
+        assertTrue(ParserUtil.parseMedicals(Collections.emptyList()).isEmpty());
+    }
+
+    @Test
+    public void parseMedicals_collectionWithValidMedicals_returnsMedicalSet() throws Exception {
+        Set<MedicalHistory> actualMedSet = ParserUtil.parseMedicals(Arrays.asList(VALID_MEDICAL_1, VALID_MEDICAL_2));
+        Set<MedicalHistory> expectedMedSet = new HashSet<MedicalHistory>(
+                Arrays.asList(new MedicalHistory(VALID_MEDICAL_1), new MedicalHistory(VALID_MEDICAL_2)));
+
+        assertEquals(expectedMedSet, actualMedSet);
     }
 }

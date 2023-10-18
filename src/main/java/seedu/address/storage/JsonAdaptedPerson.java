@@ -44,7 +44,7 @@ class JsonAdaptedPerson {
                              @JsonProperty("phone") String phone, @JsonProperty("email") String email,
                              @JsonProperty("address") String address, @JsonProperty("appointment") String appointment,
                              @JsonProperty("medicalHistories") List<JsonAdaptedMedicalHistory> medicalHistories,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.nric = nric;
         this.phone = phone;
@@ -89,8 +89,8 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        appointment = source.getAppointment() != null
-            ? source.getAppointment().value
+        appointment = source.getAppointment().isPresent()
+            ? source.getAppointment().get().value
             : null;
         medicalHistories.addAll(source.getMedicalHistories().stream()
                 .map(JsonAdaptedMedicalHistory::new)
@@ -159,14 +159,10 @@ class JsonAdaptedPerson {
 
         final Set<MedicalHistory> modelMedicalHistories = new HashSet<>(personMedicalHistory);
 
-        if (appointment == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Appointment.class.getSimpleName()));
-        }
-        if (!Appointment.isValidAppointment(appointment)) {
+        if (appointment != null && !Appointment.isValidAppointment(appointment)) {
             throw new IllegalValueException(Appointment.MESSAGE_CONSTRAINTS);
         }
-        final Appointment modelAppointment = new Appointment(appointment);
+        final Appointment modelAppointment = appointment == null ? null : new Appointment(appointment);
 
         return new Person(modelName, modelNric, modelPhone, modelEmail, modelAddress, modelAppointment,
                 modelMedicalHistories, modelTags);

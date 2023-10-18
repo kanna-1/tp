@@ -32,16 +32,22 @@ public class AppointmentTest {
 
     @Test
     public void isValidAppointment() {
-        // null appoinment
+        // null appointment
         assertThrows(NullPointerException.class, () -> Appointment.isValidAppointment(null));
 
         // invalid appointment
         assertFalse(Appointment.isValidAppointment("")); // empty string
         assertFalse(Appointment.isValidAppointment(" ")); // spaces only
+        assertFalse(Appointment.isValidAppointment("196-12-12 12:00 15:00")); // bad year
+        assertFalse(Appointment.isValidAppointment("1966-12-12 12:00")); // missing field
+        assertFalse(Appointment.isValidAppointment("1966-20-12 12:00 15:00")); // bad month
+        assertFalse(Appointment.isValidAppointment("1966-03-32 12:00 15:00")); // bad day
+        assertFalse(Appointment.isValidAppointment("1966-12-12 12:60 15:00")); // bad minute
+        assertFalse(Appointment.isValidAppointment("1966-12-12 24:00 15:00")); // bad hour
 
         // valid appointment
-        assertTrue(Appointment.isValidAppointment("2023-01-01 11:00 12:00"));
-        assertTrue(Appointment.isValidAppointment("2005-01-03 10:00 12:00"));
+        assertTrue(Appointment.isValidAppointment("1966-03-12 12:00 15:00"));
+        assertTrue(Appointment.isValidAppointment("2023-3-2 00:00 4:59")); // truncated month/hour
     }
 
     @Test
@@ -50,6 +56,7 @@ public class AppointmentTest {
 
         // same values -> returns true
         assertTrue(appointment.equals(new Appointment("2023-01-01 11:00 12:00")));
+
 
         // same object -> returns true
         assertTrue(appointment.equals(appointment));

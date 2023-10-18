@@ -9,12 +9,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Appointment {
 
-    public static final String MESSAGE_CONSTRAINTS = "Appointment should be in the format YYYY-MM-DD HH:MM HH:MM";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Appointment should be in the format YYYY-MM-DD HH:MM HH:MM, and it should not be blank";
 
-    public static final String VALIDATION_REGEX =
-            "\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\\d|3[0-1]) "
-                    + "(2[0-3]:[0-5]\\d|[0-1]\\d:[0-5]\\d) "
-                    + "(2[0-3]:[0-5]\\d|[0-1]?\\d:[0-5]?\\d)";
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\\d|3[0-1])"
+            + " (2[0-3]:[0-5]?\\d|[0-1]?\\d:[0-5]?\\d) (2[0-3]:[0-5]?\\d|[0-1]?\\d:[0-5]?\\d)";
 
     public final String value;
 
