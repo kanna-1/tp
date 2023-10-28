@@ -56,7 +56,9 @@
         "delete-feature": "Delete Feature",
         "addition-of-interface-for-find-type-commands": "Addition of Interface for Find-type commands",
         "proposed-data-archiving": "[Proposed] Data archiving",
+        "improved-gui": "Improved GUI",
         "edit-feature": "Edit Feature",
+        "find-feature": "Find Feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -170,7 +172,7 @@
       "src": "team/nubnubyas.md",
       "title": "Zhang Yiheng's Project Portfolio Page",
       "headings": {
-        "project-addressbook-level-3": "Project: AddressBook Level 3"
+        "project-healthsync": "Project: HealthSync"
       },
       "headingKeywords": {}
     },
