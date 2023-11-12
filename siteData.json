@@ -69,7 +69,8 @@
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
         "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "saving-data": "Saving data",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },
@@ -123,9 +124,9 @@
         "editing-a-patient-s-details-edit": "Editing a Patient's Details: edit",
         "deleting-a-patient-or-field-delete": "Deleting a Patient or Field: delete",
         "delete-all-patients-clear": "Delete All Patients: clear",
-        "locating-patients-by-name-or-id-find": "Locating Patients by Name or ID: find",
-        "preserving-a-find-command-result-log": "Preserving a find Command Result: log",
-        "adding-a-new-find-command-result-to-the-log-alog": "Adding a New find Command Result to the Log: alog",
+        "locating-patients-by-name-id-or-appointment-find": "Locating Patients by Name, ID or Appointment: find",
+        "preserving-a-find-command-result-in-the-log-log": "Preserving a find Command Result in the Log: log",
+        "adding-a-new-find-command-result-to-the-current-log-alog": "Adding a New find Command Result to the current Log: alog",
         "clearing-data-from-the-log-clog": "Clearing Data from the Log: clog",
         "undoing-a-command-undo": "Undoing a Command: undo",
         "exiting-healthsync-exit": "Exiting HealthSync: exit",
@@ -139,10 +140,11 @@
         "fields": "Fields",
         "cli": "CLI",
         "gui": "GUI",
+        "menu-sidebar": "Menu Sidebar",
         "patient-list-view": "Patient List View",
+        "logger-tab": "Logger Tab",
         "output-box": "Output Box",
         "command-box": "Command Box",
-        "logger-tab": "Logger Tab",
         "command-history-stack": "Command History Stack",
         "java": "Java",
         "json": "JSON",
@@ -194,7 +196,8 @@
       "src": "team/weeehung.md",
       "title": "Wee Hung's Project Portfolio Page",
       "headings": {
-        "project-healthsync": "Project: HealthSync"
+        "project-healthsync": "Project: HealthSync",
+        "references": "References:"
       },
       "headingKeywords": {}
     },
