@@ -211,7 +211,7 @@ Expected outputs when the command succeeds:
 * `Deleted Patient's field: ...`
 
 Expected output when the command fails:
-* `The given combination of Name and ID does not match any patient in the Patients list`.
+* `The given combination of Name and/or ID does not match any patient in the Patients list`.
 
 ### Delete All Patients: `clear`
 
