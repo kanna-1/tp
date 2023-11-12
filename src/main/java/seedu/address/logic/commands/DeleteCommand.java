@@ -43,7 +43,7 @@ public class DeleteCommand extends UndoableCommand {
     public static final String MESSAGE_DELETE_PATIENT_FIELD_SUCCESS = "Deleted Patient's field: %1$s";
 
     public static final String MESSAGE_PATIENT_NOT_FOUND =
-            "The given combination of Name and ID does not match any patient in the Patient List.";
+            "The given combination of Name and/or ID does not match any patient in the Patient List.";
 
     public static final String MESSAGE_NO_APPOINTMENT_TO_DELETE = "Patient does not have an appointment to delete.";
 
