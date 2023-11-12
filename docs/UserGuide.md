@@ -49,22 +49,20 @@ Here are the icons you will see throughout this User Guide and what they mean:
 - :exclamation: Things to take note of while reading the User Guide
 - :warning: Things to take caution with, as they may affect your use of HealthSync
 
+The main application consists of the:
+ 1. [Menu Sidebar](#menu-sidebar) `*`
+ 2. [Patient List View](#patient-list-view)
+ 3. [Logger Tab](#logger-tab)
+ 4. [Output Box](#output-box)
+ 5. [Command Box](#command-box)
 
-> :bulb: The main application consists of the:
-> 1. [Menu Sidebar](#menu-sidebar) `*`
-> 2. [Patient List View](#patient-list-view)
-> 3. [Logger Tab](#logger-tab)
-> 4. [Output Box](#output-box)
-> 5. [Command Box](#command-box)
+> :bulb: Click on the component in the list above to learn more about it
 
-> :bulb: Click on the component in the list above to learn more about it.
+> :warning: **`*`**: The buttons that are in grey and not pressable in the Menu Sidebar are currently not functional and will be implemented in a future version of HealthSync
 
-> :warning: **`*`**: The buttons that are in grey and not pressable in the Menu Sidebar are currently not functional and will be implemented in a future version of HealthSync.
-
->:bulb: Longer outputs have to scrolled to be viewed.
 
 5. Type the command in the command box and press Enter to execute it.
-   e.g. typing **`help`** and pressing Enter will open the help window.<br>
+   e.g. typing `help` and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all patients.
@@ -90,7 +88,10 @@ Here are the icons you will see throughout this User Guide and what they mean:
     <a href="#glossary" class="badge bg-primary">Check it out here.</a>
 </box>
 
->:exclamation: To enhance the User Guide's clarity, command outputs have been simplified and are now presented with added information indicated by an ellipsis (...).
+> :exclamation: To enhance the User Guide's clarity, command outputs have been simplified and are now presented with added information indicated by an ellipsis (...)
+
+> :bulb: Longer outputs have to scrolled to be viewed
+
 
 ### Viewing Help: `help`
 
@@ -98,9 +99,9 @@ Shows a message explaining how to access the help page. The link will bring the 
 
 [Format](#command-format): `help`
 
->:bulb: Use `h` as a shortcut to utilise the `help` command
+> :bulb: Use `h` as a shortcut to utilise the `help` command
 
->:bulb: Click on `Copy URL` after entering the `help` command and paste the link in your preferred browser
+> :bulb: Click on `Copy URL` after entering the `help` command and paste the link in your preferred browser
 
 ### Listing All Patients: `list`
 
@@ -108,7 +109,7 @@ Shows a list of all patients in HealthSync.
 
 [Format](#command-format): `list`
 
->:bulb: Use `ls` as a shortcut for `list`
+> :bulb: Use `ls` as a shortcut for `list`
 
 ![result for 'list'](images/listResult.jpg)
 
@@ -116,16 +117,16 @@ Shows a list of all patients in HealthSync.
 
 Adds a patient into HealthSync, with the given patient information.
 
-* A patient's [name](#name) and [ID](#ID) are required when creating a new entry into HealthSync.
+* A patient's [Name](#name) and [ID](#ID) are required when creating a new entry into HealthSync.
 * All the compulsory [fields](#fields) must be provided.
-* Optional fields like [Appointment](#appointment) and [medical history](#medical-history) need not be provided.
+* Optional fields like [Appointment](#appointment) and [Medical History](#medical-history) need not be provided.
 
-> :warning: Once a patient is created, their name and ID cannot be changed later.
+> :warning: Once a patient is created, their Name and ID cannot be changed later
 
-> :warning: HealthSync currently does not allow patients with identical names.
+> :warning: HealthSync currently does not allow patients with identical Names.
 > Similarly, identical IDs are not allowed.
-> 
-> Duplicate names will be allowed in the future, so stay tuned for updates.
+
+> :bulb: Duplicate Names will be allowed in the future, so stay tuned for updates
 
 [Format](#command-format):
 `add n/NAME id/ID_NUMBER p/PHONE_NUMBER e/EMAIL_ADDRESS a/ADDRESS [m/MEDICAL_HISTORY]... [ap/APPT]`
@@ -134,7 +135,7 @@ Adds a patient into HealthSync, with the given patient information.
 
 Example commands:
 
-* `add n/Aaron Tan Jun Jie id/S8943782H p/98114839 e/example@mailhere a/Serangoon HDB 123`
+* `add n/Aaron Tan Jun Jie id/S8943782H p/98114839 e/example@mail.com a/Serangoon HDB 123`
 
 ![result for 'add n/Aaron Tan Jun Jie id/S8943782H p/98114839 e/example@mailhere a/Serangoon HDB 123'](images/addResult.jpg)
 
@@ -149,13 +150,15 @@ Expected outputs when the command fails:
 
 Edits an existing patient's details in HealthSync.
 
- * Edits the patient with the specified [name](#name) or [ID](#ID).
- * If an invalid name or ID Number is passed, an error message will be logged.
+ * Edits the patient with the specified [Name](#name) and/or [ID](#ID).
+ * If an invalid Name and/or ID is passed, an error message will be logged.
  * At least one [field](#fields) to edit must be provided.
  * Existing fields will be updated to the input values.
  * If the particular field does not exist, the corresponding field with details will be added.
 
->:bulb: Update multiple fields in a single `edit` command to save time
+> :warning: Name and ID cannot be edited
+
+> :bulb: Update multiple fields in a single `edit` command to save time
 
 [Format](#command-format):
  * `edit n/NAME <field> <[field]>...`
@@ -174,20 +177,21 @@ Expected outputs when the command succeeds:
 
 Expected outputs when command fails:
 * `INVALID name and/or ID! ...`
+* `Invalid command format! ...`
 
 ### Deleting a Patient or Field: `delete`
 
 Deletes the specified patient or patient's specific details from HealthSync.
 
-* Deletes the patient or an optional [field](#fields) of the patient with the specified [name](#name) or [ID](#ID).
-* You can choose to delete using only name or ID.
-* If both name and ID are used, both must be valid and belong to the same patient.
+* Deletes the patient or an optional [field](#fields) of the patient with the specified [Name](#name) or [ID](#ID).
+* You can choose to delete using only Name or ID.
+* If both Name and ID are used, both must be valid and belong to the same patient.
 * You can only delete one patient at a time.
 * To delete a specified field only instead of the entire patient, indicate the field in the command.
   * You do not have to specify the value of that field to delete it, if HealthSync only stores 1 value for that field.
   * If you do not specify which field to delete for fields that can have multiple values,
     HealthSync will delete everything for that field.
-* The fields currently allowed for deletion are [Appointment](#appointment) and [Medical Histories](#medical-history).
+* The fields currently allowed for deletion are [Appointment](#appointment) and [Medical History](#medical-history).
 
 [Format](#command-format):
  * `delete n/NAME [ap/] [m/MEDICAL_HISTORY...]`
@@ -202,7 +206,7 @@ Example commands:
 * `delete n/John Doe m/`
 
 >:bulb: Specify the medical history to be deleted using `m/` if it's the only medical history that needs to be deleted
-> e.g `delete n/John Doe m/Diabetes`
+> e.g. `delete n/John Doe m/Diabetes`
 
 ![result for 'delete n/Alex Yeoh'](images/deleteResult.jpg)
 
@@ -211,7 +215,8 @@ Expected outputs when the command succeeds:
 * `Deleted Patient's field: ...`
 
 Expected output when the command fails:
-* `The given combination of Name and/or ID does not match any patient in the Patients list`.
+* `The given combination of Name and ID does not match any patient in the Patients list`.
+* `Invalid command format! ...`
 
 ### Delete All Patients: `clear`
 
@@ -232,7 +237,7 @@ Searches the patient list for all patients matching the [Name](#name), [ID](#ID)
 and returns their related information.
 
 * The search is case-insensitive.
-e.g `hans` will match `Hans`, `08-Jan-2023 12 13` will match `08-jan-2023 12 13`.
+e.g. `hans` will match `Hans`, `08-Jan-2023 12 13` will match `08-jan-2023 12 13`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Name, ID Number and Appointment can be searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
@@ -250,7 +255,7 @@ e.g `hans` will match `Hans`, `08-Jan-2023 12 13` will match `08-jan-2023 12 13`
  * `find ap/APPT`
  * You may combine the fields. Example: `find n/NAME id/ID_NUMBER`
 
->:bulb: Use the shortcut `f` for faster patient-finding
+> :bulb: Use the shortcut `f` for faster patient-finding
 
 Example commands:
 * `find n/Alex Yeoh`
@@ -260,20 +265,20 @@ Example commands:
 
 ![result for 'find id/T0123456F'](images/findidT0123456FResult.jpg)
 
->:bulb: This list command can be used to show the original patient list after a find command is executed
+> :bulb: This list command can be used to show the original patient list after a find command is executed
 
 ### Preserving a `find` Command Result in the Log: `log`
 
 Logs the result of the [find command](#locating-patients-by-name-id-or-appointment--find)
 to the [logger tab](#logger-tab), which can be viewed at all times.
 
-Upon app start, the logger tab is pre-populated with profiles of patients who have appointments on the day itself.
+Upon starting HealthSync, the logger tab is pre-populated with profiles of patients who have different appointments.
 
 This is how it looks like:
 
 ![pre-populated log](images/originalLog.jpg)
 
->:wrench: If you want to access the patient list or look up a new patient but would still need to refer to the current
+> :wrench: If you want to access the patient list or look up a new patient but would still need to refer to the current
 > patient's details, simply `log` so the profile stays on your screen while you carry out your other tasks!
 
 * Saving to the logger tab only works for results of the `find` command.
@@ -284,7 +289,7 @@ This is how it looks like:
 [Format](#command-format):
 `log`
 
->:bulb: Use the shortcut `lo` for faster patient-logging
+> :bulb: Use the shortcut `lo` for faster patient-logging
 
 Example Command: `log` (after performing a `find` on the list)
 
@@ -296,10 +301,10 @@ Expected outputs when the command succeeds:
 Expected output when the command fails:
 * `Cannot log an empty list.`
 
->:bulb: `log` overwrites the data currently in the logger tab, so you do not need to clear the logger tab before using
+> :bulb: `log` overwrites the data currently in the logger tab, so you do not need to clear the logger tab before using
 > this command
 
->:warning: The logger tab does not update when logged patients' profiles are edited or deleted.
+> :warning: The logger tab does not update when logged patients' profiles are edited or deleted.
 > The logger tab is intended to be a snapshot of the patients' details at the time that they were logged.
 > To reflect the edited changes in the logger tab after a change has been made, do `log` after the change.
 
@@ -308,9 +313,9 @@ Expected output when the command fails:
 Appends the new results of the most recent [find command](#locating-patients-by-name-id-or-appointment--find)
 to the current data in the [logger tab](#logger-tab), which can be viewed at all times.
 
->:bulb: Use `alog` to save patient data you want to continue referring to, on top of the profiles you currently have logged
+> :bulb: Use `alog` to save patient data you want to continue referring to, on top of the profiles you currently have logged
 
->:wrench: If you have multiple patients you need to toggle between, and do not want to keep doing `find` to retrieve their data, simply `alog` so their profiles stay on your screen for easy access!
+> :wrench: If you have multiple patients you need to toggle between, and do not want to keep doing `find` to retrieve their data, simply `alog` so their profiles stay on your screen for easy access!
 
 
 * Adding to the logger tab only works for results of the `find` command.
@@ -334,18 +339,18 @@ Expected outputs when the command succeeds:
 Expected output when the command fails:
 * `Cannot log an empty list.`
 
->:bulb: `alog` does not overwrite the data and instead adds on to it, so you do not have to keep performing `log` to save more data
+> :bulb: `alog` does not overwrite the data and instead adds on to it, so you do not have to keep performing `log` to save more data
 
 ### Clearing Data from the Log: `clog`
 
 Clears all current data in the [logger tab](#logger-tab).
 
->:bulb: Use `clog` command if you do not need the data in the current logger tab anymore
+> :bulb: Use `clog` command if you do not need the data in the current logger tab anymore
 
 [Format](#command-format):
 `clog`
 
->:bulb:  Use the shortcut `cl` for faster log-clearing
+> :bulb:  Use the shortcut `cl` for faster log-clearing
 
 Example Command: `clog`
 
@@ -363,21 +368,17 @@ Undoes the last undo-able action within HealthSync.
 * `undo` can only undo the previous commands provided
   it does not exceed the size of the [command history stack](#command-history-stack).
 
->:warning: Upon closing HealthSync, the undo history will be erased
+> :warning: Upon closing HealthSync, the undo history will be erased
 
-Format:
+[Format](#command-format):
 * `undo [number]`
 
->:bulb: Note that this command uses `[number]`! This means you can optionally put in the
+> :bulb: Note that this command uses `[number]`! This means you can optionally put in the
  number of actions you wish to undo.
 
->:bulb: Use `u` as a shortcut for `undo`
+> :bulb: Use `u` as a shortcut for `undo`
 
->:bulb: Simply entering `undo` will undo the last command
-
-Fields that can be deleted:
-* Appointment: Include `ap/` behind delete command
-* Medical History: Include `m/` behind delete command. Can delete specific Medical History. e.g `m/diabetes`
+> :bulb: Simply entering `undo` will undo the last command
 
 Example commands:
 *  `undo 2`
@@ -400,7 +401,7 @@ Exits HealthSync.
 [Format](#command-format):
 `exit`
 
->:bulb: Use `ex` as a shortcut for `exit`
+> :bulb: Use `ex` as a shortcut for `exit`
 
 ### Auto Save
 
@@ -416,7 +417,7 @@ There is no need to save manually.
 HealthSync data are saved automatically as a JSON file `[JAR file location]/data/healthsync.json`.
 Advanced users are welcome to update data directly by editing that data file.
 
->:warning: **Caution:**
+> :warning: **Caution:**
 >If your changes to the data file makes its format invalid, HealthSync will discard all data and start with an empty
 >data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.
 >
