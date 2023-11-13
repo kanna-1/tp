@@ -52,7 +52,8 @@
         "common-classes": "Common classes",
         "implementation": "Implementation",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
-        "implementation-of-single-optional-appointment-field": "Implementation of Single, optional Appointment Field",
+        "implementation-of-singular-optional-fields": "Implementation of Singular, Optional Fields",
+        "implementation-of-appointment-field": "Implementation of Appointment Field",
         "delete-feature": "Delete Feature",
         "addition-of-interface-for-find-type-commands": "Addition of Interface for Find-type commands",
         "proposed-data-archiving": "[Proposed] Data archiving",
@@ -116,6 +117,7 @@
       "headings": {
         "healthsync-user-guide": "HealthSync User Guide",
         "why-healthsync": "Why HealthSync?",
+        "using-this-guide": "Using this Guide",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing Help: help",
@@ -142,6 +144,7 @@
         "gui": "GUI",
         "menu-sidebar": "Menu Sidebar",
         "patient-list-view": "Patient List View",
+        "patient-card": "Patient Card",
         "logger-tab": "Logger Tab",
         "output-box": "Output Box",
         "command-box": "Command Box",
@@ -156,7 +159,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "healthsync": "HealthSync"
       },
       "headingKeywords": {}
     },
